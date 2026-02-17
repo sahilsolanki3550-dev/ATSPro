@@ -15,7 +15,7 @@ const NavBar = () => {
 
       <div className='flex gap-5 items-center'>
         {/* <div className='cursor-pointer'>Log In</div> */}
-        <Link href={"#"} className='px-6 py-2 bg-blue-800 rounded-lg text-white cursor-pointer'>Get Started</Link>
+        <Link href={"#"} className='px-6 py-2 bg-green-600 rounded-lg text-white cursor-pointer'>Get Started</Link>
       </div>
     </div>
   )
