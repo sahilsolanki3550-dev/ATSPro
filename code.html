@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ATSPro | AI Resume Analyzer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3c3cf6",
+                        "background-light": "#f5f5f8",
+                        "background-dark": "#0a0a16",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(34, 34, 73, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(60, 60, 246, 0.4);
+        }
+        .neon-border {
+            border: 1px solid rgba(60, 60, 246, 0.3);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(60, 60, 246, 0.2);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-200 min-h-screen">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-white/5 glass-panel px-6 py-3">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2">
+<div class="bg-primary p-1.5 rounded-lg">
+<span class="material-symbols-outlined text-white text-2xl leading-none">analytics</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-white">ATSPro <span class="text-primary text-xs uppercase ml-1 bg-primary/10 px-1.5 py-0.5 rounded">AI</span></h1>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium text-white/90 hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium text-white/50 hover:text-white transition-colors" href="#">My Resumes</a>
+<a class="text-sm font-medium text-white/50 hover:text-white transition-colors" href="#">Job Tracker</a>
+<a class="text-sm font-medium text-white/50 hover:text-white transition-colors" href="#">Premium</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-white/40 text-lg">search</span>
+<input class="bg-white/5 border-white/10 rounded-lg pl-10 pr-4 py-1.5 text-sm focus:ring-primary focus:border-primary w-64 text-white" placeholder="Quick search..." type="text"/>
+</div>
+<button class="p-2 rounded-lg hover:bg-white/5 text-white/60">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-gradient-to-tr from-primary to-blue-400 border border-white/20" data-alt="User profile avatar gradient"></div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 h-[calc(100vh-80px)]">
+<!-- Left Panel: Input -->
+<div class="lg:col-span-5 flex flex-col gap-6 overflow-y-auto custom-scrollbar pr-2">
+<div class="space-y-1">
+<h2 class="text-2xl font-bold text-white">Resume Analyzer</h2>
+<p class="text-white/50 text-sm">Upload your resume and the target job description to get instant AI feedback.</p>
+</div>
+<!-- Job Description Area -->
+<div class="glass-panel p-5 rounded-xl space-y-4">
+<div class="flex items-center justify-between">
+<label class="text-sm font-semibold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">description</span>
+                        Job Description
+                    </label>
+<span class="text-[10px] text-white/30 uppercase tracking-widest">Required</span>
+</div>
+<textarea class="w-full h-48 bg-black/20 border-white/5 rounded-lg text-sm text-white/80 placeholder:text-white/20 focus:ring-primary focus:border-primary custom-scrollbar resize-none p-4" placeholder="Paste the target job description here. Mention key skills, responsibilities, and requirements..."></textarea>
+</div>
+<!-- Upload Area -->
+<div class="glass-panel p-5 rounded-xl space-y-4">
+<div class="flex items-center justify-between">
+<label class="text-sm font-semibold text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">upload_file</span>
+                        Upload Resume
+                    </label>
+<span class="text-[10px] text-white/30 uppercase tracking-widest">PDF or DOCX</span>
+</div>
+<div class="border-2 border-dashed border-white/10 hover:border-primary/50 transition-colors rounded-xl p-8 flex flex-col items-center justify-center gap-3 bg-white/[0.02] cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">cloud_upload</span>
+</div>
+<div class="text-center">
+<p class="text-sm text-white/80 font-medium">Drag and drop your file here</p>
+<p class="text-xs text-white/40 mt-1">or <span class="text-primary">browse your computer</span></p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 bg-white/5 rounded-lg border border-white/5">
+<span class="material-symbols-outlined text-red-400">picture_as_pdf</span>
+<div class="flex-1 min-w-0">
+<p class="text-xs font-medium text-white/80 truncate">Senior_Software_Engineer_v2.pdf</p>
+<p class="text-[10px] text-white/40">1.2 MB • Ready</p>
+</div>
+<button class="text-white/30 hover:text-white"><span class="material-symbols-outlined text-sm">close</span></button>
+</div>
+</div>
+<!-- Analyze Button -->
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all neon-glow active:scale-[0.98]">
+<span class="material-symbols-outlined">auto_awesome</span>
+                Analyze Now
+            </button>
+</div>
+<!-- Right Panel: Result -->
+<div class="lg:col-span-7 flex flex-col gap-6 overflow-y-auto custom-scrollbar pr-2">
+<!-- Analysis Summary Card -->
+<div class="glass-panel rounded-xl p-6 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="px-3 py-1 bg-green-500/10 text-green-400 text-xs font-bold rounded-full border border-green-500/20">Good Match</span>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-8">
+<!-- Donut Chart -->
+<div class="relative w-40 h-40">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-white/5" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-primary drop-shadow-[0_0_8px_rgba(60,60,246,0.6)]" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-dasharray="440" stroke-dashoffset="105.6" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-4xl font-black text-white">76%</span>
+<span class="text-[10px] text-white/40 uppercase tracking-tighter">ATS Score</span>
+</div>
+</div>
+<div class="flex-1 space-y-4">
+<h3 class="text-xl font-bold text-white">AI Verdict</h3>
+<p class="text-sm text-white/60 leading-relaxed">Your resume shows a strong alignment with core technical requirements. However, you are missing critical <span class="text-red-400">cloud infrastructure</span> keywords and could improve the <span class="text-primary">impact quantification</span> of your achievements.</p>
+<div class="grid grid-cols-2 gap-4 pt-2">
+<div class="bg-white/5 rounded-lg p-3">
+<p class="text-[10px] text-white/40 uppercase mb-1">Keyword Match</p>
+<div class="flex items-center justify-between">
+<span class="text-sm font-bold text-white">82%</span>
+<div class="w-16 h-1 bg-white/10 rounded-full overflow-hidden">
+<div class="bg-green-400 h-full w-[82%]"></div>
+</div>
+</div>
+</div>
+<div class="bg-white/5 rounded-lg p-3">
+<p class="text-[10px] text-white/40 uppercase mb-1">Formatting</p>
+<div class="flex items-center justify-between">
+<span class="text-sm font-bold text-white">64%</span>
+<div class="w-16 h-1 bg-white/10 rounded-full overflow-hidden">
+<div class="bg-yellow-400 h-full w-[64%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Tabs Section -->
+<div class="glass-panel rounded-xl flex-1 flex flex-col min-h-0">
+<div class="flex border-b border-white/5 px-2">
+<button class="px-6 py-4 text-sm font-semibold text-primary border-b-2 border-primary">Overview</button>
+<button class="px-6 py-4 text-sm font-semibold text-white/50 hover:text-white transition-colors">Missing Keywords</button>
+<button class="px-6 py-4 text-sm font-semibold text-white/50 hover:text-white transition-colors">Improvement Suggestions</button>
+<button class="px-6 py-4 text-sm font-semibold text-white/50 hover:text-white transition-colors flex items-center gap-1">
+                        ATS Formatting 
+                        <span class="w-2 h-2 rounded-full bg-red-500"></span>
+</button>
+</div>
+<div class="p-6 overflow-y-auto custom-scrollbar space-y-6">
+<!-- Missing Keywords Content -->
+<div class="space-y-4">
+<h4 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-red-400 text-lg">cancel</span>
+                            Critical Keywords Missing
+                        </h4>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-lg bg-red-400/10 border border-red-400/20 text-red-400 text-xs font-medium flex items-center gap-2">
+                                AWS Lambda <span class="material-symbols-outlined text-xs">add_circle</span>
+</span>
+<span class="px-3 py-1.5 rounded-lg bg-red-400/10 border border-red-400/20 text-red-400 text-xs font-medium flex items-center gap-2">
+                                CI/CD Pipelines <span class="material-symbols-outlined text-xs">add_circle</span>
+</span>
+<span class="px-3 py-1.5 rounded-lg bg-red-400/10 border border-red-400/20 text-red-400 text-xs font-medium flex items-center gap-2">
+                                Kubernetes <span class="material-symbols-outlined text-xs">add_circle</span>
+</span>
+<span class="px-3 py-1.5 rounded-lg bg-red-400/10 border border-red-400/20 text-red-400 text-xs font-medium flex items-center gap-2">
+                                Terraform <span class="material-symbols-outlined text-xs">add_circle</span>
+</span>
+</div>
+</div>
+<!-- Improvement Suggestions -->
+<div class="space-y-4">
+<h4 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">lightbulb</span>
+                            AI Suggestions
+                        </h4>
+<ul class="space-y-3">
+<li class="flex gap-3 text-sm text-white/70">
+<span class="text-primary mt-0.5">•</span>
+<span>Quantify your achievements in the <strong>Netflix Clone</strong> project. Instead of "Improved performance", use "Reduced page load time by 40% using Redis caching".</span>
+</li>
+<li class="flex gap-3 text-sm text-white/70">
+<span class="text-primary mt-0.5">•</span>
+<span>Your contact information is missing a <strong>LinkedIn Profile URL</strong>, which is expected for 95% of software roles.</span>
+</li>
+<li class="flex gap-3 text-sm text-white/70">
+<span class="text-primary mt-0.5">•</span>
+<span>Strengthen your "Skills" section by grouping them into categories (e.g., Languages, Frameworks, Tools).</span>
+</li>
+</ul>
+</div>
+<!-- Formatting Warnings -->
+<div class="p-4 rounded-xl bg-red-500/5 border border-red-500/20 space-y-3">
+<h4 class="text-sm font-bold text-red-400 flex items-center gap-2">
+<span class="material-symbols-outlined">warning</span>
+                            ATS Critical Errors
+                        </h4>
+<p class="text-xs text-red-300/70 leading-relaxed">
+                            We detected a <strong>graphical element</strong> or icon in your header. Some older ATS systems (like Taleo) may fail to parse your contact information if it's placed inside a text box or accompanied by icons.
+                        </p>
+<button class="text-xs font-bold text-white bg-red-500/20 px-3 py-1.5 rounded hover:bg-red-500/40 transition-colors">
+                            How to fix this?
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Stats -->
+<footer class="fixed bottom-0 left-0 right-0 p-4 pointer-events-none">
+<div class="max-w-7xl mx-auto flex justify-end">
+<div class="glass-panel px-4 py-2 rounded-full border border-white/5 text-[10px] text-white/40 flex items-center gap-4 pointer-events-auto">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+                    AI Engine Online
+                </div>
+<div class="h-3 w-[1px] bg-white/10"></div>
+<div>Last Scan: Today, 14:20</div>
+</div>
+</div>
+</footer>
+</body></html>

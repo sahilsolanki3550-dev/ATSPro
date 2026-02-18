@@ -1,5 +1,5 @@
 import HeroSection from "@/components/HeroSection";
-import InputSection from "@/components/InputSection";
+import InputSection from "@/components/Dashboard/InputSection";
 import NavBar from "@/components/NavBar";
 import Image from "next/image";
 
