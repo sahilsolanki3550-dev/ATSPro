@@ -1,0 +1,42 @@
+
+
+Fontend ->  User eneter Job Description getting Required skills for job
+
+            InputSection client component
+            Input field submit button
+            send job-description
+    
+            One server action function that receives job-description
+            stores job_description in jd variable
+            store one prompt in prompt variable. prompt includes how to use this job_description and genearte relevnt data like required skills for that job.
+            
+            now use another function inside main server action fucntion which fetch geminie api and sends this prompt.and getting response.
+
+            return response
+
+            get that response in InputSection components and show the result in Results section 
+
+
+
+Next.js/typescript
+
+project on resume optimizer and suggest impover 
+getting users job_description and user uplaod their resume.
+getting pecentage score by macthing job description and rseume.
+suggest imporovemnets 
+using gemine api next.js, typescript, tailwind server action
+don not give anything now. just wait
+
+extract text form pdf uploded by user in nextjs and display in console
+
+
+ // Convert file to Buffer
+    const arrayBuffer = await file.arrayBuffer()
+    const buffer = Buffer.from(arrayBuffer)
+
+    // // Parse PDF
+    // // const data = await pdfParse(buffer)
+
+    const parser =new  PDFParse(buffer);
+    const result = await parser.getText()
+    console.log(result.text)
