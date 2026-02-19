@@ -8,13 +8,13 @@ const NavBar = () => {
       <div className='flex gap-5'>
         <div className='flex'>
           <div>Logo</div>
-          <h1 className='font-bold text-white text-xl'>ATSPro</h1>
+          <h1 className='font-bold text-white text-xl'><Link href={"./"}>ATSPro</Link></h1>
           <span className='text-xs text-[#3c3cf4]'>AI</span>
         </div>
 
         <div className='flex items-center'>
           <ul className='flex items-center gap-5'>
-            <Link href={"#"}><li className='text-sm font-medium  text-white'>Dashboard</li></Link>
+            <Link href={"/dashboard"}><li className='text-sm font-medium  text-white'>Dashboard</li></Link>
             <Link href={"#"}><li className='text-sm font-medium text-white hover:text-primary transition-colors opacity-70'>My Resumes</li></Link>
             <Link href={"#"}><li className='text-sm font-medium text-white hover:text-primary transition-colors opacity-70'>Job Tracker</li></Link>
             <Link href={"#"}><li className='text-sm font-medium text-white hover:text-primary transition-colors opacity-70'>Premium</li></Link>

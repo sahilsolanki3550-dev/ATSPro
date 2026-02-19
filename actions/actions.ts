@@ -2,15 +2,13 @@
 import { AiResponse } from "@/types/type";
 import { GoogleGenAI } from "@google/genai";
 
-import pdfToText from 'react-pdftotext';
-
-
-
 export const optimize = async (job_description: string, resume_text: string) => {
 
-    const ai = new GoogleGenAI({
-        apiKey: process.env.GEMINI_API_KEY!,
-    })
+    const apiKey= process.env.GEMINI_API_KEY
+    if(!apiKey){
+        console.log("api key not found")
+    }
+    const ai = new GoogleGenAI({apiKey})
     const prompt = `
             You are an advanced AI Resume Analyzer.
 
@@ -62,20 +60,23 @@ export const optimize = async (job_description: string, resume_text: string) => 
             `;
 
     const response = await ai.models.generateContent({
-        model: "gemini-2.5-flash",
+        model: "gemini-3-flash-preview",
         contents: prompt,
     })
 
     
    
-    const text = response.text ?? ""
-    const cleanedText = text.replace(/```json/g, "").replace(/```/g, "").trim()
-   
+    const text = response.text || ""
+    // const cleanedText = text.replace(/```json/g, "").replace(/```/g, "").trim()
+    const cleanedText = text.replace("```json", "").replace("```", "").trim()
+    
+    // console.log("text", text)
+    // console.log("cleanedText" , cleanedText)
     const result = JSON.parse(cleanedText) as AiResponse 
+    // const result2 =cleanedText
     
 
-    // const skills = job_description + "Next.js"
-    // return skills
+    
     return result
 }
 

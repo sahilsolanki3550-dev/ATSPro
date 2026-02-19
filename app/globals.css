@@ -24,3 +24,8 @@
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 } */
+
+@theme static {
+  --color-primary: #3c3cf6;
+  --color-secondary: #14142a;
+}
