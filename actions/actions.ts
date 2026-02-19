@@ -75,8 +75,6 @@ export const optimize = async (job_description: string, resume_text: string) => 
     const result = JSON.parse(cleanedText) as AiResponse 
     // const result2 =cleanedText
     
-
-    
     return result
 }
 

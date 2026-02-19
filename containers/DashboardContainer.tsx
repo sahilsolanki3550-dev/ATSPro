@@ -1,6 +1,5 @@
 import InputSection from '@/components/Dashboard/InputSection'
-import ResultSection from '@/components/Dashboard/ResultSection'
-import React from 'react'
+
 
 const DashboardContainer = () => {
   return (
@@ -9,7 +8,7 @@ const DashboardContainer = () => {
         <InputSection />
       </div>
       <div>
-        <ResultSection />
+        {/* <ResultSection /> */}
       </div>
     </div>
   )

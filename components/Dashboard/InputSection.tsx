@@ -5,6 +5,7 @@ import pdfToText from 'react-pdftotext';
 import { AiResponse } from '@/types/type';
 import { FileText, Sparkles } from 'lucide-react';
 import { Upload } from 'lucide-react';
+import ResultSection from './ResultSection';
 
 
 
@@ -18,9 +19,10 @@ const InputSection = () => {
         
         // const response = await optimize(job_description, resume_text) as AiResponse
         const response = await optimize(job_description, resume_text)
-        console.log(response)
-        // if(response)
+        if(response)
         setResult(response)
+        // console.log(response)
+        // if(response)
     }
 
 
@@ -75,7 +77,7 @@ const InputSection = () => {
                            
                             </div>
                             <div className='flex justify-center px-2'>
-                                <button type='submit' className='px-10 py-4 bg-primary flex gap-2 text-white rounded-full items-center justify-center cursor-pointer hover:bg-[#1f1fd2] transition-all duration-200 font-semibold text-[20px]'> <Sparkles fill='white' strokeWidth={1}/> Analyze Now</button>
+                                <button type='submit' className='px-10 py-4 min-w-100 bg-primary flex gap-2 text-white rounded-full items-center justify-center cursor-pointer hover:bg-[#1f1fd2] transition-all duration-200 font-semibold text-[20px]'> <Sparkles fill='white' strokeWidth={1}/> Analyze Now</button>
                             </div>    
                         </form>
                     
@@ -84,40 +86,11 @@ const InputSection = () => {
             </div>
         </div>
 
-      
-{/*            
+        {result &&  
             
-            <div className='p-5 bg-[#14142a] rounded-lg space-y-5'>
-                <h3 className='text-white'>Result</h3>
-                <div className='bg-gray-100 rounded-sm px-5 py-2 min-h-80 w-full border border-gray-200 shadow space-y-5'>
-
-                    <div>Match Percentage:{result?.match_percentage}</div> 
-                    <div>Matched Skills:
-                        <ul>
-                            {(result?.matched_skills || []).map((skill, index)=>(
-                            <li>{index}. {skill}</li>  
-                            ))} 
-                        </ul> 
-                    </div>
-                    <div>Missing Skills:
-                        <ul>
-                            {(result?.missing_skills || []).map((skill, index)=>(
-                                <li>{index}. {skill}</li>  
-                            ))} 
-                        </ul> 
-                    </div>
-                    <div>
-                        Needs Improvement in: 
-                        <ul>
-                            {(result?.improvement_suggestions || []).map((suggestion, index)=>(
-                            <li>{index}. {suggestion}</li>  
-                            ))} 
-                        </ul> 
-                    </div>
-                    <div>Overall Feedback : {result?.overall_feedback}</div>
-                    <div></div>
-                </div>
-            </div> */}
+                <ResultSection result={result}/>
+            
+        }
           
         </section>
     )
