@@ -29,3 +29,11 @@
   --color-primary: #3c3cf6;
   --color-secondary: #14142a;
 }
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}

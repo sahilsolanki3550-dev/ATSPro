@@ -21,8 +21,8 @@ const ResultSection:React.FC<ResultProp> = ( {result}) => {
             <div className='space-y-2'>
                 <div className='flex justify-between items-center'>   
                     <h3 className='text-white font-semibold text-2xl'>AI Verdict</h3>
-                    <h3 className={` bg-green-950 ${result.match_percentage<=30?"text-red-500": "text-green-500" } rounded-full px-4 py-2`}>
-                        {result.match_percentage <= 30?"Bad Match":"Good Match"}
+                    <h3 className={`  ${result.match_percentage<=40?"text-red-500 bg-[#F871711A]": "bg-green-950 text-green-500" } rounded-full px-4 py-2`}>
+                        {result.match_percentage <= 40?"Bad Match":"Good Match"}
                     </h3>
                 </div>
                 <p className='text-gray-500'>{result.overall_feedback}</p>
@@ -64,7 +64,7 @@ const ResultSection:React.FC<ResultProp> = ( {result}) => {
                 <h3 className='uppercase text-white text-lg font-semibold'>Matched Skills</h3>
                 <ul className='flex gap-3'>
                     {(result.matched_skills).map((skill, index)=>(
-                        <li key={index} className='bg-[#F871711A] text-red-400 py-1 px-4 text-sm rounded-full border border-[#F8717133] font-semibold'>{skill}</li>
+                        <li key={index} className='bg-green-950 text-green-500 py-1 px-4 text-sm rounded-full border border-[#F8717133] font-semibold'>{skill}</li>
                     ))}
                     
                 </ul>
