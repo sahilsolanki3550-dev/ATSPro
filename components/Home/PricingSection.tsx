@@ -1,0 +1,57 @@
+import { time } from 'console'
+import { features, title } from 'process'
+import React from 'react'
+
+// interface PlanFeature{
+   
+//     title:string
+// }
+
+const PricingSection = () => {
+
+    const PlanFetures =[
+        "Unlimited Resume Scans",
+        "Advanced AI Suggestions",
+        "kill Gap Analytics",
+        "Priority Support"
+    ]
+  return (
+    <section className='my-40 space-y-13'>
+        <div className='text-center space-y-4'>
+            <h1 className='text-4xl font-black'>Simple, Transparent Pricing</h1>
+            <p className='text-slate-400'>Invest in your career with a plan that fits your job search pace.</p>
+        </div>
+
+        <div className='grid grid-cols-3 gap-10'>
+            <div></div>
+            <div className='bg-primary/10 border-2 border-primary p-10 rounded-2xl space-y-5 shadow-[0_0_20px_rgba(60,60,246,0.3)] transition-all duration-300 hover:-translate-y-5'>
+                <div className='space-y-2'>
+                    <h2 className='text-xl font-bold'>Free</h2>
+                    <p className='text-slate-400 text-sm'>For the active candidate</p>
+                </div>
+                
+                <h1 className='text-4xl font-black mb-10'>$0 <span className='text-base font-normal text-slate-500 -ml-2'>/month</span></h1>
+                
+                    <ul className='space-y-4'>
+
+                        {PlanFetures.map((feature,index)=>(
+
+                            
+                            <li className='flex items-center gap-2 text-sm text-slate-400'>
+                            <span className="material-symbols-outlined mt-1  text-primary text-xl">check
+                                </span> {feature}
+                        </li>
+                        ))}
+                    </ul>   
+                
+                <div>
+                    <button className='w-full py-4 rounded-full mt-10 font-bold bg-primary hover:bg-primary/90 transition-all text-white shadow-lg'>Start Free </button>
+                </div>
+            </div>
+            <div></div>
+        </div>
+    </section>
+  )
+}
+
+export default PricingSection

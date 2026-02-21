@@ -43,7 +43,7 @@ const HeroSection = () => {
       </div>
 
 
-      <div className='flex items-center justify-center'>
+      <div className='flex items-center justify-center opacity-50'>
         <div className='bg-[#14142c] rounded-4xl  relative p-8 shadow-2xl border border-[#FFFFFF1A] '>
           
         <div className='h-18 w-16 absolute -top-10 rounded-xl  -right-5 bg-[#171736] border border-blue-950 flex items-center justify-center'>

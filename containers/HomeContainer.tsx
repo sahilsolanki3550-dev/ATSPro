@@ -1,5 +1,6 @@
 import FeaturesSection from '@/components/Home/FeaturesSection'
 import HeroSection from '@/components/Home/HeroSection'
+import PricingSection from '@/components/Home/PricingSection'
 import StepsSection from '@/components/Home/StepsSection'
 import React from 'react'
 
@@ -12,6 +13,7 @@ const HomeContainer = () => {
       </div>
       <div><StepsSection /></div>
       <div><FeaturesSection /></div>
+      <div><PricingSection /></div>
     </div>
   )
 }
