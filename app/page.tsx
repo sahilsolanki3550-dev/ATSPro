@@ -1,6 +1,6 @@
 import HeroSection from "@/components/Home/HeroSection";
 import InputSection from "@/components/Dashboard/InputSection";
-import NavBar from "@/components/NavBar";
+import NavBar from "@/components/CommonUI/NavBar";
 import Image from "next/image";
 import HomeContainer from "@/containers/HomeContainer";
 
