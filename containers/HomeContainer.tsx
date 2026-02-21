@@ -2,6 +2,7 @@ import FeaturesSection from '@/components/Home/FeaturesSection'
 import HeroSection from '@/components/Home/HeroSection'
 import PricingSection from '@/components/Home/PricingSection'
 import StepsSection from '@/components/Home/StepsSection'
+import TestimonialsSection from '@/components/Home/TestimonialsSection'
 import React from 'react'
 
 const HomeContainer = () => {
@@ -14,6 +15,7 @@ const HomeContainer = () => {
       <div><StepsSection /></div>
       <div><FeaturesSection /></div>
       <div><PricingSection /></div>
+      <div><TestimonialsSection /></div>
     </div>
   )
 }
