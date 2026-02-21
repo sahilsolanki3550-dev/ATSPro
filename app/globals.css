@@ -28,6 +28,9 @@
 @theme static {
   --color-primary: #3c3cf6;
   --color-secondary: #14142a;
+  --color-background: #ffffff08;
+  --color-border:#ffffff1a
+
 }
 
 .container {
