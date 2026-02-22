@@ -5,10 +5,10 @@ import React from 'react'
 const page = () => {
   return (
     <>
-      <div className='sticky z-50 top-0 '>
+      <div className='sticky z-50 top-0  '>
         <UserNavbar />
       </div>
-      <div className='pt-8 '>
+      <div className='pt-8'>
         <DashboardContainer />
       </div>
     </>

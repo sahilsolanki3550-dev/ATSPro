@@ -50,7 +50,7 @@ const FeaturesSection = () => {
             <p className='text-slate-400'>Everything you need to bypass filters and impress recruiters.</p>
         </div>
 
-        <div className='grid grid-cols-3 gap-6'>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
         {featureList.map((feature, index)=>(
 
             <div key={index} className='bg-background border border-border p-10 rounded-3xl transition-all   hover:bg-white/5'>

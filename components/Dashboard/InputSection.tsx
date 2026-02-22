@@ -1,7 +1,7 @@
 'use client'
 import { useCallback, useState } from 'react'
 import { optimize } from '../../actions/actions'
-import pdfToText from 'react-pdftotext';
+// import pdfToText from 'react-pdftotext';
 import { AiResponse } from '@/types/type';
 import { FileText, Sparkles } from 'lucide-react';
 import { Upload } from 'lucide-react';
@@ -26,6 +26,8 @@ const InputSection = () => {
             if(!file){
                 alert("Plese Upload Resume ")
             }
+
+            const pdfToText = (await import("react-pdftotext")).default
             const resume_text = await pdfToText(file)
             
             // const response = await optimize(job_description, resume_text) as AiResponse
@@ -58,8 +60,8 @@ const InputSection = () => {
 
                 <div>
                         <form action={handlesubmit} className='space-y-8'>
-                            <div className=' grid grid-cols-2 gap-5'>
-                            <div className='bg-secondary rounded-4xl py-6 px-7 space-y-5'>
+                            <div className=' grid grid-cols-1 md:grid-cols-2 gap-5'>
+                            <div className='bg-secondary rounded-4xl py-5 px-5 md:py-6 md:px-7 space-y-5'>
                                 
                                 <div className='flex justify-between items-center'>    
                                     <h3 className='text-white font-semibold flex gap-2 text-lg items-center'><FileText size={23} color='blue'  /> Job Description</h3><span className='text-gray-600 uppercase font-semibold'>Required</span>
@@ -67,7 +69,7 @@ const InputSection = () => {
                                 <textarea className='rounded-xl px-5 py-2 min-h-50 w-full border-[#FFFFFF0D] shadow placeholder:text-gray-500 placeholder:text-lg text-white bg-[#101022]' name='job_description' placeholder='Paste the full job requirements, responsibilities and qualification here...' />
                             </div>
 
-                             <div className='bg-secondary rounded-4xl py-6 px-7 space-y-6'>
+                             <div className='bg-secondary rounded-4xl py-5 px-5 md:py-6 md:px-7  space-y-6'>
                                 
                                 <div className='flex justify-between items-center'>    
                                     <h3 className='text-white font-semibold flex gap-2 text-lg items-center'><Upload size={23} color='blue'/> Upload Resume</h3><span className='text-gray-600 uppercase font-semibold'>Pdf Only</span>
@@ -95,7 +97,7 @@ const InputSection = () => {
                            
                             </div>
                             <div className='flex justify-center px-2'>
-                                <button type='submit' className='px-10 py-4 min-w-150 bg-primary flex gap-2 text-white rounded-full items-center justify-center cursor-pointer hover:bg-[#1f1fd2] transition-all duration-200 font-semibold text-[20px]'> <Sparkles fill='white' strokeWidth={1}/> Analyze Now</button>
+                                <button type='submit' className='px-10 py-4 w-full md:max-w-150 bg-primary flex gap-2 text-white rounded-full items-center justify-center cursor-pointer hover:bg-[#1f1fd2] transition-all duration-200 font-semibold text-[20px]'> <Sparkles fill='white' strokeWidth={1}/> Analyze Now</button>
                             </div>    
                         </form>
                     

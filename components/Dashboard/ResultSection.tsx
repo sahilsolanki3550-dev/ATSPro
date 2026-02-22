@@ -13,38 +13,29 @@ const ResultSection:React.FC<ResultProp> = ( {result}) => {
   return (
    <section className='space-y-8 transition-all duration-300 my-15  '>
         {/* Top */}
-        <div className='bg-secondary flex gap-8 px-8 py-4 rounded-4xl border border-gray-800 items-center'>
-            <div className='flex flex-col justify-center items-center  h-40 w-40 border border-primary   shadow-lg rounded-full p-10'>
+        <div className='bg-secondary grid grid-cols-1 md:grid-cols-12 gap-8 px-5    md:px-8 py-4 rounded-4xl border border-gray-800 items-center'>
+            <div className='md:col-span-4 flex flex-row md:flex-col lg:flex-row gap-5 md:gap-10 justify-center items-center'>
+                {/* Match Score */}
+                 <div className={`h-35 w-35 md:h-43 md:w-43  flex items-center justify-center rounded-full shadow-lg`} style={{
+                                background: `conic-gradient(#3c3cf6  0% ${result.match_score}%, #1f1f35 ${result.match_score}% 100%)`  }}>
+                        <div className={`h-29 w-29 md:h-35 md:w-35 bg-secondary  flex flex-col gap-1 items-center justify-center text-4xl   rounded-full h1`}>
+                                {result.match_score}%
+                                <span className='text-gray-500 uppercase text-[9px] font-bold'>Match Score</span>
+                        </div>       
+                </div>
+
+                {/*ATS Score  */}
                
-                <div className='h-50 w-50 rounded-full  flex items-center justify-center'>
-                    <div className={`h-43 w-43   flex items-center justify-center rounded-full shadow-lg`} style={{
-                            background: `conic-gradient(#3c3cf6  0% ${result.match_score}%, #1f1f35 ${result.match_score}% 100%)`  }}>
-
-                        <div className={`h-35 w-35 bg-secondary  flex flex-col gap-1 items-center justify-center text-4xl   rounded-full h1`}>
-                            {result.match_score}%
-                            <span className='text-gray-500 uppercase text-[9px] font-bold'>Match Score</span>
-                        </div>
-                    </div>
-                </div> 
-                
+                 <div className={`h-35 w-35 md:h-43 md:w-43  flex items-center justify-center rounded-full shadow-lg`} style={{
+                                background: `conic-gradient(#3c3cf6  0% ${result.ats_score}%, #1f1f35 ${result.ats_score}% 100%)`  }}>
+                        <div className={`h-29 w-29 md:h-35 md:w-35 bg-secondary  flex flex-col gap-1 items-center justify-center text-4xl   rounded-full h1`}>
+                                {result.ats_score}%
+                                <span className='text-gray-500 uppercase text-[9px] font-bold'>ATS Score</span>
+                        </div>       
+                </div>
             </div>
-
-            <div className='flex flex-col justify-center items-center  h-40 w-40 border border-primary   shadow-lg rounded-full p-10'>
-                <div className='h-43 w-43 rounded-full  bg-[#161631] flex items-center justify-center'>
-                    <div className={`h-43 w-43   flex items-center justify-center  bg-primary rounded-full shadow-lg`} style={{
-                            background: `conic-gradient(#3c3cf6  0% ${result.ats_score}%, #1f1f35 ${result.ats_score}% 100%)`  }}>
-
-                        <div className={`h-35 w-35 bg-[#0a0a16]  flrx items-center justify-center rounded-full `}>
-                             <div className={`h-35 w-35 bg-secondary flex flex-col gap-1 items-center justify-center text-4xl   rounded-full h1`}>
-                            {result.ats_score}%
-                            <span className='text-gray-500 uppercase text-[9px] font-bold'>Ats Score</span>
-                        </div>
-                        </div>
-                    </div>
-                </div> 
-                
-            </div>
-            <div className='space-y-2'>
+            {/* Ai Verdict */}
+            <div className='space-y-2 md:col-span-8'>
                 <div className='flex justify-between items-center'>   
                     <h3 className='text-white font-semibold text-2xl'>AI Verdict</h3>
                     <h3 className={`rounded-full px-4 py-2 border
@@ -62,7 +53,7 @@ const ResultSection:React.FC<ResultProp> = ( {result}) => {
                 </div>
                 <p className='text-gray-500'>{result.verdict_summary}</p>
                 
-                <div className='grid grid-cols-2 gap-5 py-5'>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-5 py-5'>
                         <div className='p-3 rounded-2xl bg-[#1f1f34] space-y-1 flex flex-col shadow-lg'>
                             <span className='text-gray-500'>Keyword Match</span>
                             <div className='flex justify-between items-center'>
@@ -86,6 +77,7 @@ const ResultSection:React.FC<ResultProp> = ( {result}) => {
                 </div>
                 
             </div>
+
         </div>
         
         {/* Bottom */}
@@ -100,7 +92,7 @@ const ResultSection:React.FC<ResultProp> = ( {result}) => {
             </div>
             <div className='space-y-5'>
                 <h3 className='uppercase text-white text-lg font-semibold'>Missing Skills</h3>
-                <ul className='flex gap-3'>
+                <ul className='flex flex-wrap gap-3'>
                     {(result.missing_keywords).map((keyword, index)=>(
                         <li key={index} className='bg-[#F871711A] text-red-400 py-1 px-4 text-sm rounded-full border border-[#F8717133] font-semibold'>{keyword}</li>
                     ))}
@@ -109,16 +101,15 @@ const ResultSection:React.FC<ResultProp> = ( {result}) => {
             </div>
             <div className='space-y-5'>
                 <h3 className='uppercase text-white text-lg font-semibold'>Matched Skills</h3>
-                <ul className='flex gap-3'>
+                <ul className='flex flex-wrap gap-3 max-w-full'>
                     {(result.matched_skills).map((skill, index)=>(
                         <li key={index} className='bg-green-950 text-green-500 py-1 px-4 text-sm rounded-full border border-[#F8717133] font-semibold'>{skill}</li>
                     ))}
-                    
                 </ul>
             </div>
             <div className='space-y-5'>
                 <h3 className='text-white font-semibold uppercase'>AI Suggestions</h3>
-                <ul  className='list-disc marker:text-primary pl-5'>
+                <ul  className='list-disc marker:text-primary pl-5 space-y-5 md:space-y-1'>
                     {(result.improvement_suggestions).map((suggestion, index)=>(
 
                     <li key={index} className='text-gray-500'>{suggestion}</li>
@@ -136,6 +127,9 @@ const ResultSection:React.FC<ResultProp> = ( {result}) => {
             </div> */}
 
         </div>
+      
+
+
         
    </section>
   )

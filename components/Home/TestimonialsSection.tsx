@@ -39,18 +39,18 @@ const TestimonialsSection = () => {
           <div className='h-10 w-10 bg-gray-500  opacity-50 '></div>
         </div>
       </div>
-      <div className='grid grid-cols-3 gap-8'>
+      <div className='grid rid-cols-1 md:grid-cols-3 gap-5 md:gap-8'>
         {TestimonialList.map((t, index) => (
 
           <div key={index} className='p-10 bg-background boreder rounded-4xl border-border space-y-6'>
-            <p className='text-slate-300 text-xl'>"{t.desc}"</p>
+            <p className='text-slate-300 md:text-xl'>"{t.desc}"</p>
             <div className='flex gap-5 items-center'>
               <div className='h-12 w-12 bg-white rounded-full'>
               </div>
               <div>
                 <h2 className='font-bold
-                 text-white text-2xl'>{t.name}</h2>
-                <p className=' text-slate-500'>{t.designation}</p>
+                 text-white text-xl md:text-2xl'>{t.name}</h2>
+                <p className=' text-slate-500 text-sm md:text-[18px]'>{t.designation}</p>
               </div>
             </div>
           </div>

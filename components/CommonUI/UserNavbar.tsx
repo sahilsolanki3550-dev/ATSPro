@@ -4,7 +4,7 @@ import { Bell, Layers2 } from 'lucide-react';
 
 const UserNavbar = () => {
   return (
-    <div className='flex justify-between px-25 py-4 border-[ffffff ] bg-secondary'>
+    <div className='flex justify-between px-5 md:px-25 py-4 border-[ffffff ] bg-secondary'>
       <div className='flex gap-5'>
         <div className='flex items-center gap-2'>
           <div className='h-13 w-10 rounded-3xl bg-primary flex items-center justify-center'><Layers2 fill='white' /></div>

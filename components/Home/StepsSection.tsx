@@ -4,13 +4,13 @@ import { Upload } from 'lucide-react';
 
 const StepsSection = () => {
   return (
-    <section className='my-30 text-white space-y-20' id='howItWorks'>
+    <section className='md:my-30 text-white space-y-20' id='howItWorks'>
         <div className='text-center space-y-5'>
             <h3 className='text-4xl font-black text-[#ffffff]'>Three Steps to Interview Invitations</h3>
-            <p className='text-slate-400 text-xl'>Our streamlined process takes less than 30 seconds to get
+            <p className='text-slate-400  text-[18px] md:text-xl'>Our streamlined process takes less than 30 seconds to get
                     you actionable feedback.</p>
         </div>
-        <div className='grid grid-cols-3 gap-10'>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-10'>
             <div className='flex flex-col items-center text-center space-y-6 relative'>
                 <div className='w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center border border-primary/20 transition-all'>
                 <FileText color='blue' strokeWidth={2} size={40}/>

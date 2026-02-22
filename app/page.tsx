@@ -10,6 +10,9 @@ export default function Home() {
     <div className="sticky top-0 z-10">
             <NavBar />
     </div>
+    <div className="block md:hidden">
+      
+    </div>
     <div>
       <HomeContainer />
     </div>
