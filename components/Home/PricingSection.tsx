@@ -1,6 +1,7 @@
 import { time } from 'console'
 import { features, title } from 'process'
 import React from 'react'
+import PrimaryButton from '../Shared/PrimaryButton'
 
 // interface PlanFeature{
    
@@ -45,7 +46,7 @@ const PricingSection = () => {
                     </ul>   
                 
                 <div>
-                    <button className='w-full py-4 rounded-full mt-10 font-bold bg-primary hover:bg-primary/90 transition-all text-white shadow-lg'>Start Free </button>
+                    <PrimaryButton name='Start Free' className='w-full'/>
                 </div>
             </div>
             <div></div>

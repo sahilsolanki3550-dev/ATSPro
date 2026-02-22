@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { ArrowRight } from 'lucide-react';
 import { Sparkles } from 'lucide-react'
@@ -8,10 +9,13 @@ import { Plus } from 'lucide-react';
 import { TriangleAlert } from 'lucide-react';
 import { Layers2 } from 'lucide-react';
 import Link from 'next/link';
+import PrimaryButton from '../Shared/PrimaryButton';
+import { useRouter } from "next/navigation"
 
 
 
 const HeroSection = () => {
+  const router = useRouter()
   return (
     <section className='mx-auto grid grif-cols-1 md:grid-cols-2 '>
       <div className="absolute top-0 right-0 -z-10 w-125 h-125 bg-primary/10 rounded-full blur-[120px]"></div>
@@ -27,10 +31,9 @@ const HeroSection = () => {
         <p className='md:text-lg text-slate-400 md:max-w-lg '>Upload your resume, paste the job description, and instantly see how well you match. Our AI identifies gaps and gives you the exact keywords to rank higher.</p>
 
         <div className='flex justify-center md:justify-start gap-3 md:gap-5'>
-          <Link href={"./dashboard"}  className='bg-primary hover:bg-primary/90 cursor-pointer text-white px-3 sm:px-4 md:px-8 md:py-4 rounded-full font-bold text-lg flex items-center justify-center transition-all space-x-2'>
-            <span>Analyze Resume</span>
-            <ArrowRight strokeWidth={2.5} />
-          </Link>
+          <div>
+            <PrimaryButton name='Analyze Resume' icon={true} onClick={()=>router.push("/dashboard")}/>
+          </div>
           <button className='bg-[#ffffff08] px-3 sm:px-4 py-3 md:px-8 md:py-4 cursor-pointer rounded-full font-bold text-lg hover:bg-white/5  border-2 border-[#ffffff1a] transition-all text-white backdrop:blur-xl'>See Demo</button>
         </div>
         <div className='py-2 flex items-center gap-5 md:gap-8 my-15 md:my-0'>

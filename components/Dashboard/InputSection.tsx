@@ -6,7 +6,7 @@ import { AiResponse } from '@/types/type';
 import { FileText, Sparkles } from 'lucide-react';
 import { Upload } from 'lucide-react';
 import ResultSection from './ResultSection';
-import {useDropzone} from 'react-dropzone'
+// import {useDropzone} from 'react-dropzone'
 
 
 const InputSection = () => {
@@ -14,6 +14,7 @@ const InputSection = () => {
     const [result, setResult] = useState<AiResponse>()
     
     const handlesubmit = async (formData: FormData) => {
+        
         try{
 
             const job_description = formData.get("job_description") as string
