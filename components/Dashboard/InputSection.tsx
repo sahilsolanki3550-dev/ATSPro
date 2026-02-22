@@ -12,39 +12,47 @@ import ResultSection from './ResultSection';
 const InputSection = () => {
 
     const [result, setResult] = useState<AiResponse>()
-    
-    const handlesubmit = async (formData: FormData) => {
-        
-        try{
+        const [loading, setLoading] = useState(false)
 
-            const job_description = formData.get("job_description") as string
-            const file = formData.get("file") as File
+    const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
+    e.preventDefault()
 
-            if(!job_description){
-                alert("Enter job description ")
-            }
-            
-            if(!file){
-                alert("Plese Upload Resume ")
-            }
+    try {
+        setLoading(true)
 
-            const pdfToText = (await import("react-pdftotext")).default
-            const resume_text = await pdfToText(file)
-            
-            // const response = await optimize(job_description, resume_text) as AiResponse
-            const response = await optimize(job_description, resume_text)
-            if(!response){
-                alert("Error")
-                return
-            }
-            setResult(response)
-            console.log(response)
-        }       catch(error){
-            console.log(error)
+        const formData = new FormData(e.currentTarget)
+
+        const job_description = formData.get("job_description") as string
+        const file = formData.get("file") as File
+
+        if (!job_description) {
+            alert("Enter job description")
+            return
         }
-        // console.log(response)
-        // if(response)
+
+        if (!file) {
+            alert("Plese Upload Resume")
+            return
+        }
+
+        const pdfToText = (await import("react-pdftotext")).default
+        const resume_text = await pdfToText(file)
+
+        const response = await optimize(job_description, resume_text)
+
+        if (!response) {
+            alert("Error")
+            return
+        }
+
+        setResult(response)
+
+    } catch (error) {
+        console.log(error)
+    } finally {
+        setLoading(false)
     }
+}   
 
    
     return (
@@ -60,7 +68,7 @@ const InputSection = () => {
                 </div>
 
                 <div>
-                        <form action={handlesubmit} className='space-y-8'>
+                        <form onSubmit={handleSubmit} className='space-y-8'>
                             <div className=' grid grid-cols-1 md:grid-cols-2 gap-5'>
                             <div className='bg-secondary rounded-4xl py-5 px-5 md:py-6 md:px-7 space-y-5'>
                                 
@@ -114,7 +122,25 @@ const InputSection = () => {
             </div>
             
         }
-          
+
+         {loading && (
+            <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center">
+                <div className="w-full max-w-md px-8">
+                    
+                    <div className="mb-4 text-center">
+                        <p className="text-white text-lg font-semibold animate-pulse">
+                            Analyzing your resume...
+                        </p>
+                    </div>
+
+                    <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+                        <div className="h-full bg-primary animate-[progressLoad_2s_linear_infinite]"></div>
+                    </div>
+
+                </div>
+            </div>
+        )}
+            
         </section>
     )
 }
