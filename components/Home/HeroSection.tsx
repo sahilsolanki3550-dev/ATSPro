@@ -7,6 +7,7 @@ import { Check } from 'lucide-react';
 import { Plus } from 'lucide-react';
 import { TriangleAlert } from 'lucide-react';
 import { Layers2 } from 'lucide-react';
+import Link from 'next/link';
 
 
 
@@ -26,10 +27,10 @@ const HeroSection = () => {
         <p className='text-lg text-slate-400 max-w-lg '>Upload your resume, paste the job description, and instantly see how well you match. Our AI identifies gaps and gives you the exact keywords to rank higher.</p>
 
         <div className='flex gap-5'>
-          <button className='bg-primary hover:bg-primary/90 cursor-pointer text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center transition-all space-x-2'>
+          <Link href={"./dashboard"}  className='bg-primary hover:bg-primary/90 cursor-pointer text-white px-8 py-4 rounded-full font-bold text-lg flex items-center justify-center transition-all space-x-2'>
             <span>Analyze Resume</span>
             <ArrowRight strokeWidth={2.5} />
-          </button>
+          </Link>
           <button className='bg-[#ffffff08] px-8 py-4 cursor-pointer rounded-full font-bold text-lg hover:bg-white/5  border-2 border-[#ffffff1a] transition-all text-white backdrop:blur-xl'>See Demo</button>
         </div>
         <div className='py-2 flex items-center gap-8'>
@@ -43,7 +44,7 @@ const HeroSection = () => {
       </div>
 
 
-      <div className='flex items-center justify-center opacity-50'>
+      <div className='flex items-center justify-center opacity-80'>
         <div className='bg-[#14142c] rounded-4xl  relative p-8 shadow-2xl border border-[#FFFFFF1A] '>
           
         <div className='h-18 w-16 absolute -top-10 rounded-xl  -right-5 bg-[#171736] border border-blue-950 flex items-center justify-center'>

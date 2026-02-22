@@ -37,7 +37,7 @@ const PricingSection = () => {
                         {PlanFetures.map((feature,index)=>(
 
                             
-                            <li className='flex items-center gap-2 text-sm text-slate-400'>
+                            <li key={index} className='flex items-center gap-2 text-sm text-slate-400'>
                             <span className="material-symbols-outlined mt-1  text-primary text-xl">check
                                 </span> {feature}
                         </li>

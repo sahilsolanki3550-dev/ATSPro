@@ -11,16 +11,33 @@ import ResultSection from './ResultSection';
 
 const InputSection = () => {
 
-    const [result, setResult] = useState<AiResponse>()
+    const [result, setResult] = useState<AiResponse>(null)
     const handlesubmit = async (formData: FormData) => {
-        const job_description = formData.get("job_description") as string
-        const file = formData.get("file") as File
-         const resume_text = await pdfToText(file)
-        
-        // const response = await optimize(job_description, resume_text) as AiResponse
-        const response = await optimize(job_description, resume_text)
-        if(response)
-        setResult(response)
+        try{
+
+            const job_description = formData.get("job_description") as string
+            const file = formData.get("file") as File
+
+            if(!job_description){
+                alert("Enter job description ")
+            }
+            
+            if(!file){
+                alert("Plese Upload Resume ")
+            }
+            const resume_text = await pdfToText(file)
+            
+            // const response = await optimize(job_description, resume_text) as AiResponse
+            const response = await optimize(job_description, resume_text)
+            if(!response){
+                alert("Error")
+                return
+            }
+            setResult(response)
+            console.log(response)
+        }       catch(error){
+            console.log(error)
+        }
         // console.log(response)
         // if(response)
     }
@@ -87,8 +104,10 @@ const InputSection = () => {
         </div>
 
         {result &&  
-            
+            <div className='animate-fadeIn'>
+
                 <ResultSection result={result}/>
+            </div>
             
         }
           

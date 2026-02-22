@@ -3,7 +3,7 @@ import React from 'react'
 
 const Fotter = () => {
   return (
-    <section className='my-20  '>
+    <section className='mt-20  '>
         <div className='py-20 border px-25  border-white/5'>
 
        

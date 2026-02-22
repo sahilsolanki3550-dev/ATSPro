@@ -42,7 +42,7 @@ const TestimonialsSection = () => {
       <div className='grid grid-cols-3 gap-8'>
         {TestimonialList.map((t, index) => (
 
-          <div className='p-10 bg-background boreder rounded-4xl border-border space-y-6'>
+          <div key={index} className='p-10 bg-background boreder rounded-4xl border-border space-y-6'>
             <p className='text-slate-300 text-xl'>"{t.desc}"</p>
             <div className='flex gap-5 items-center'>
               <div className='h-12 w-12 bg-white rounded-full'>
