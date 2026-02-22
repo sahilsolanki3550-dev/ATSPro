@@ -3,7 +3,7 @@ import InputSection from '@/components/Dashboard/InputSection'
 
 const DashboardContainer = () => {
   return (
-    <div className='space-y-10'>
+    <div className='space-y-10 px-25'>
       <div>
         <InputSection />
       </div>

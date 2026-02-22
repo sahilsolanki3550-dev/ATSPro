@@ -29,7 +29,7 @@ const TestimonialsSection = () => {
   ]
 
   return (
-    <section className='space-y-15'>
+    <section className='space-y-15' id='testimonial'>
       <div className='space-y-20'>
         <h1 className='text-3xl font-black text-center '>Trusted by Job Seekers at</h1>
         <div className='flex gap-15 justify-center'>

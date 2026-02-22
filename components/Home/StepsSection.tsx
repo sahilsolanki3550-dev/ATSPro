@@ -4,7 +4,7 @@ import { Upload } from 'lucide-react';
 
 const StepsSection = () => {
   return (
-    <section className='my-30 text-white space-y-20'>
+    <section className='my-30 text-white space-y-20' id='howItWorks'>
         <div className='text-center space-y-5'>
             <h3 className='text-4xl font-black text-[#ffffff]'>Three Steps to Interview Invitations</h3>
             <p className='text-slate-400 text-xl'>Our streamlined process takes less than 30 seconds to get

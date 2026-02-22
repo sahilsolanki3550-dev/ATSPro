@@ -6,8 +6,13 @@ import HomeContainer from "@/containers/HomeContainer";
 
 export default function Home() {
   return (
+    <>
+    <div className="sticky top-0 z-10">
+            <NavBar />
+    </div>
     <div>
       <HomeContainer />
     </div>
+    </>
   );
 }

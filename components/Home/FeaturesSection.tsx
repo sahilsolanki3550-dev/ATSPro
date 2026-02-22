@@ -42,7 +42,7 @@ const FeaturesSection = () => {
         }
 ]
   return (
-    <section className='space-y-10'>
+    <section className='space-y-10' id='features'>
     
     
         <div className='text-center space-y-4'>

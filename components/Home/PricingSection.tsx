@@ -16,7 +16,7 @@ const PricingSection = () => {
         "Priority Support"
     ]
   return (
-    <section className='my-40 space-y-13'>
+    <section className='my-40 space-y-13' id='pricing'>
         <div className='text-center space-y-4'>
             <h1 className='text-4xl font-black'>Simple, Transparent Pricing</h1>
             <p className='text-slate-400'>Invest in your career with a plan that fits your job search pace.</p>

@@ -1,17 +1,18 @@
 'use client'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { optimize } from '../../actions/actions'
 import pdfToText from 'react-pdftotext';
 import { AiResponse } from '@/types/type';
 import { FileText, Sparkles } from 'lucide-react';
 import { Upload } from 'lucide-react';
 import ResultSection from './ResultSection';
-
+import {useDropzone} from 'react-dropzone'
 
 
 const InputSection = () => {
 
-    const [result, setResult] = useState<AiResponse>(null)
+    const [result, setResult] = useState<AiResponse>()
+    
     const handlesubmit = async (formData: FormData) => {
         try{
 
@@ -42,9 +43,7 @@ const InputSection = () => {
         // if(response)
     }
 
-
    
-
     return (
         <section className=''>
             <div className=''>
@@ -75,6 +74,8 @@ const InputSection = () => {
                                 </div>                                
                                 <div>
                                     <label htmlFor="file">
+                                        <input type="file" className="hidden" name='file' id='file' />
+                                        
                                         <div className='border-2 border-dashed border-[#FFFFFF1A] rounded-4xl py-10 text-center items-center flex flex-col justify-center space-y-5 cursor-pointer hover:bg-[#1c1c42] transition-all duration-300'>
                                             <div>
                                                 <span className='h-15 w-15 bg-[#1c1c42] rounded-full flex items-center justify-center '><Upload size={23} color='blue' strokeWidth={3}/></span>
@@ -87,14 +88,14 @@ const InputSection = () => {
                                             </div>
                                         </div>
                                     </label>
-                                    <input type="file" className="hidden" name='file' id='file'/>
+                                    
                                 </div>
                             </div>
 
                            
                             </div>
                             <div className='flex justify-center px-2'>
-                                <button type='submit' className='px-10 py-4 min-w-100 bg-primary flex gap-2 text-white rounded-full items-center justify-center cursor-pointer hover:bg-[#1f1fd2] transition-all duration-200 font-semibold text-[20px]'> <Sparkles fill='white' strokeWidth={1}/> Analyze Now</button>
+                                <button type='submit' className='px-10 py-4 min-w-150 bg-primary flex gap-2 text-white rounded-full items-center justify-center cursor-pointer hover:bg-[#1f1fd2] transition-all duration-200 font-semibold text-[20px]'> <Sparkles fill='white' strokeWidth={1}/> Analyze Now</button>
                             </div>    
                         </form>
                     
