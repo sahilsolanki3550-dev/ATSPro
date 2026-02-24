@@ -7,7 +7,6 @@ interface FeatureProp{
 
 }
 
-
 const FeaturesSection = () => {
     const featureList:FeatureProp[] = [
         {
@@ -42,22 +41,22 @@ const FeaturesSection = () => {
         }
 ]
   return (
-    <section className='space-y-10' id='features'>
+    <section className='space-y-10 opacity-0 animate-[fadeInUp_0.8s_ease-out_forwards] scroll-mt-24' id='features'>
     
     
         <div className='text-center space-y-4'>
-            <h1 className='text-4xl font-black '>Engineered for Results</h1>
-            <p className='text-slate-400'>Everything you need to bypass filters and impress recruiters.</p>
+            <h1 className='text-4xl font-black transition-all duration-500 hover:tracking-tight'>Engineered for Results</h1>
+            <p className='text-slate-400 transition-all duration-500 hover:text-slate-300'>Everything you need to bypass filters and impress recruiters.</p>
         </div>
 
         <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
         {featureList.map((feature, index)=>(
 
-            <div key={index} className='bg-background border border-border p-10 rounded-3xl transition-all   hover:bg-white/5'>
-                <span className="material-symbols-outlined text-primary text-4xl mb-4  scale-140 transition-transform">{feature.icon}</span>
+            <div key={index} className='bg-background border border-border p-10 rounded-3xl transition-all   hover:bg-white/5 duration-500 hover:-translate-y-3 hover:scale-[1.03] hover:shadow-2xl hover:shadow-primary/10'>
+                <span className="material-symbols-outlined text-primary text-4xl mb-4  scale-140 transition-transform duration-300 hover:scale-150">{feature.icon}</span>
                 <div className='space-y-2'>
-                    <h3 className='text-lg font-bold capitalize'>{feature.title}</h3>
-                    <p className='text-slate-400'>{feature.desc}</p>
+                    <h3 className='text-lg font-bold capitalize transition-all duration-300 hover:text-primary'>{feature.title}</h3>
+                    <p className='text-slate-400 transition-all duration-300 hover:text-slate-300'>{feature.desc}</p>
                 </div>
             </div>
         ))}
