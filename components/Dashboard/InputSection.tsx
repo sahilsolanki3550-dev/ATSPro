@@ -2,58 +2,116 @@
 import { useState } from 'react'
 import { optimize } from '../../actions/actions'
 // import pdfToText from 'react-pdftotext';
+import pdf from '@/public/icons/pdf.png'
 import { AiResponse } from '@/types/type';
-import { FileText, Sparkles } from 'lucide-react';
+import { FileText, Sparkles, X } from 'lucide-react';
 import { Upload } from 'lucide-react';
 import ResultSection from './ResultSection';
-// import {useDropzone} from 'react-dropzone'
+import Image from 'next/image';
+import { toast, ToastContainer } from 'react-toastify';
 
 const InputSection = () => {
 
     const [result, setResult] = useState<AiResponse>()
     const [loading, setLoading] = useState(false)
+    const [dragActive, setDragActive] = useState(false)
+    const [file, setFile] = useState<File | null>()
+
+    const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+        e.preventDefault()
+        setDragActive(true)
+    }
+
+    const hadleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+        e.preventDefault()
+        setDragActive(false)
+    }
+
+     const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+        e.preventDefault()
+        setDragActive(false)
+
+        const FileList = e.dataTransfer.files
+
+        if (!FileList || FileList.length === 0) return
+
+        const dropped_file = FileList[0] as File
+        if(dropped_file.type !== "application/pdf"){
+            toast.error("Uplod only pdf")
+            return
+        }
+        setFile(dropped_file)
+        toast.success("File Uploded")
+        
+
+        // const input = document.getElementById("file") as HTMLInputElement
+        // if (!input) return
+
+        // const dt = new DataTransfer()
+        // dt.items.add(dropped_file)
+        // input.files = dt.files  
+    }
+
+    const handleFile = (selected_file:File) => {
+        toast.success("File Uploded")
+        setFile(selected_file)
+    }
+
+     const removeFile = () => {
+        setFile(null)
+        toast.success("File Removed")
+        const input = document.getElementById("file") as HTMLInputElement
+        input.value = ""
+    }
     
    const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
-    e.preventDefault()
+        e.preventDefault()
 
-    try {
-        setLoading(true)
+        try {
+            setLoading(true)
 
-        const formData = new FormData(e.currentTarget)
+            const formData = new FormData(e.currentTarget)
 
-        const job_description = formData.get("job_description") as string
-        const file = formData.get("file") as File
+            const job_description = formData.get("job_description") as string
+            
+            if (!job_description) {
+                toast.info("Enter job description")
+                return
+            }
 
-        if (!job_description) {
-            alert("Enter job description")
-            return
+            if (!file || file.size === 0) {
+                toast.info("Plese Upload Resume")
+                return
+            }
+
+            const pdfToText = (await import("react-pdftotext")).default
+            const resume_text = await pdfToText(file)
+
+            const response = await optimize(job_description, resume_text)
+
+            if (!response) {
+                toast.error("Error, Please retry")
+                return
+            }
+
+            toast.success("Analysis Done")
+            setResult(response)
+
+        } catch (error) {
+            console.log(error)
+            toast.info("You excced daily quota")
+        } finally {
+            setLoading(false)
+           
         }
-
-        if (!file) {
-            alert("Plese Upload Resume")
-            return
-        }
-
-        const pdfToText = (await import("react-pdftotext")).default
-        const resume_text = await pdfToText(file)
-
-        const response = await optimize(job_description, resume_text)
-
-        if (!response) {
-            alert("Error")
-            return
-        }
-
-        setResult(response)
-
-    } catch (error) {
-        console.log(error)
-    } finally {
-        setLoading(false)
     }
-}   
 
     return (
+        <>
+        
+        <ToastContainer position='top-right' hideProgressBar={true} autoClose={2000} />
+
+      
         <section className='opacity-0 animate-[fadeInUp_0.7s_ease-out_forwards] transition-all duration-500'>
             <div>
 
@@ -93,9 +151,18 @@ const InputSection = () => {
 
                                 <div>
                                     <label htmlFor="file">
-                                        <input type="file" className="hidden" name='file' id='file' />
+                                        <input type="file" className="hidden" name='file' id='file' accept="application/pdf" onChange={(e) => {
+                                                        if (!e.target.files?.length) return;
+                                                        handleFile(e.target.files[0]);
+                                                    }}/>
                                         
-                                        <div className='border-2 border-dashed border-[#FFFFFF1A] rounded-4xl py-10 text-center items-center flex flex-col justify-center space-y-5 cursor-pointer hover:bg-[#1c1c42] transition-all duration-300 hover:border-primary hover:scale-[1.02]'>
+                                        <div    onDragOver={handleDragOver}
+                                                onDragLeave={hadleDragLeave}
+                                                onDrop={handleDrop}
+                                               className={`border-2 border-dashed rounded-4xl py-10 text-center items-center flex flex-col justify-center space-y-5 cursor-pointer transition-all duration-300 ${dragActive
+                                                        ? "border-primary bg-[#1c1c42] scale-[1.02]"
+                                                        : "border-[#FFFFFF1A] hover:bg-[#1c1c42] hover:border-primary hover:scale-[1.02]"
+                                                        }`}>
                                             <div>
                                                 <span className='h-15 w-15 bg-[#1c1c42] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/20'>
                                                     <Upload size={23} color='blue' strokeWidth={3}/>
@@ -112,6 +179,19 @@ const InputSection = () => {
                                             </div>
                                         </div>
                                     </label>
+                                    {file && (
+                                                <div className=' bg-gray-800 my-5 p-2 flex gap-2 transition-all duration-300'>
+                                                    <Image alt='pdf' src={pdf} width={20} />
+                                                    <div className='flex justify-between w-full'>
+                                                        <div> {file?.name} </div>
+                                                        <div className='flex gap-2'>
+                                                            {(file.size / 1024).toFixed(2)} KB
+
+                                                            <div onClick={removeFile}><X color='red' /></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
                                 </div>
                             </div>
                             </div>
@@ -157,6 +237,7 @@ const InputSection = () => {
     )}
           
         </section>
+          </>
     )
 }
 

@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { ArrowRight } from 'lucide-react';
+import { CircleUserRound  } from 'lucide-react';
 import { Sparkles } from 'lucide-react'
 import { TrendingUp } from 'lucide-react';
 import { Lightbulb } from 'lucide-react';
@@ -11,6 +11,8 @@ import { Layers2 } from 'lucide-react';
 import Link from 'next/link';
 import PrimaryButton from '../Shared/PrimaryButton';
 import { useRouter } from "next/navigation"
+import user from "@/public/icons/user.png"
+import Image from 'next/image';
 
 const HeroSection = () => {
   const router = useRouter()
@@ -36,10 +38,10 @@ const HeroSection = () => {
         </div>
         <div className='py-2 flex items-center gap-5 md:gap-8 my-15 md:my-0'>
           <div className='flex -space-x-3'>
-            <div className='h-10 w-10 bg-[#fbe6d3] rounded-full border border-[#0a0a20] transition-transform duration-300 hover:scale-110'></div>
-            <div className='h-10 w-10 bg-[#fbe6d3] rounded-full border border-[#0a0a20] transition-transform duration-300 hover:scale-110'></div>
-            <div className='h-10 w-10 bg-[#fbe6d3] rounded-full border border-[#0a0a20] transition-transform duration-300 hover:scale-110'></div>
-          </div>
+            <div className='h-10 w-10 bg-[#fbe6d3] rounded-full border border-[#0a0a20] transition-transform duration-300 hover:scale-110 flex items-center justify-center'><Image alt='User' src={user} /></div>
+            <div className='h-10 w-10 bg-[#fbe6d3] rounded-full border border-[#0a0a20] transition-transform duration-300 hover:scale-110 flex items-center justify-center'><Image alt='User' src={user} /></div>
+            <div className='h-10 w-10 bg-[#fbe6d3] rounded-full border border-[#0a0a20] transition-transform duration-300 hover:scale-110 flex items-center justify-center'><Image alt='User' src={user} /></div>
+           </div>
           <p className=' text-slate-500 font-medium'><span className='text-white'>1,200+</span> professionals landed jobs this week</p>
         </div>
       </div>

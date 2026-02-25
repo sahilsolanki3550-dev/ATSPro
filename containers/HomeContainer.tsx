@@ -17,7 +17,7 @@ const HomeContainer = () => {
       <div><StepsSection /></div>
       <div ><FeaturesSection /></div>
       <div><PricingSection /></div>
-      <div><TestimonialsSection /></div>
+      {/* <div><TestimonialsSection /></div> */}
     </div>
   )
 }
