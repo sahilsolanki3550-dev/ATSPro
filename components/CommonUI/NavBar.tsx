@@ -24,10 +24,10 @@ const NavBar = () => {
           <>
           <X className="text-white cursor-pointer " onClick={() => setOpen(false)} />
           <div className="absolute top-full left-0 w-full bg-secondary flex flex-col gap-4 p-5 md:hidden transition-all duration-300">
-          <Link href="#home" onClick={() => setOpen(false)} className="text-white">Home</Link>
-          <Link href="#features" onClick={() => setOpen(false)} className="text-white">Features</Link>
-          <Link href="#howItWorks" onClick={() => setOpen(false)} className="text-white">How It works</Link>
-          <Link href="#pricing" onClick={() => setOpen(false)} className="text-white">Pricing</Link>
+          <Link href="/" onClick={() => setOpen(false)} className="text-white">Home</Link>
+          <Link href="/#features" onClick={() => setOpen(false)} className="text-white">Features</Link>
+          <Link href="/#howItWorks" onClick={() => setOpen(false)} className="text-white">How It works</Link>
+          <Link href="/#pricing" onClick={() => setOpen(false)} className="text-white">Pricing</Link>
           {/* <Link href="#testimonial" onClick={() => setOpen(false)} className="text-white">Testimonial</Link> */}
           <Link href={"/dashboard"}><li className=' font-medium text-white hover:text-primary transition-colors opacity-70'>Analyze</li></Link>
 
